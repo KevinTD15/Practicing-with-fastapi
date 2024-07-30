@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  db:
+    image: postgres
+    container_name: fastapi-alembic
+    environment:
+      POSTGRES_DATABASE: fastapi19
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_USER: ${DATABASE_USERNAME}
+    ports:
+      - "5430:5432"
+    volumes:
+      - ./fastapi-19.sql:/docker-entrypoint-initdb.d/fastapi-19.sql
+      - /path/on/host:/var/lib/postgresql
